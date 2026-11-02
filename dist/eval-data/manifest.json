@@ -1,0 +1,46 @@
+{
+  "dataset_version": "2026-11-02-development-1",
+  "created_on": "2026-11-02",
+  "synthetic": true,
+  "notice": "Synthetic development fixtures. Not real Bankrate incidents or policy. Labels are proposals for Support and Compliance review. Not representative, held-out, or production evidence.",
+  "status": "authored_not_model_evaluated",
+  "split": "development_only",
+  "category_counts": {
+    "general_qa": 10,
+    "product_feedback": 10,
+    "compliance": 10
+  },
+  "routine_note": "Primary intent and draft eligibility are separate: 7 routine cases permit drafts; 3 require manual handling. These blocked cases do not count as usable routine drafts.",
+  "rfc_snapshot_sha256": "4189b7b745213449b85ed0d18748cedd713018d4306247ce441e31bf5e952f09",
+  "rfc_reference": "../../../RFC.md",
+  "fixture_provenance": "New hand-authored scenarios reuse and extend fictional sources/history from the earlier prototype. Semantic overlap is intentional; this entire corpus and related cases must remain development-only.",
+  "heldout_rule": "Do not recycle these cases, paraphrases, contrast pairs, or related historical records into held-out evaluation. Group related records; use only evidence available before the evaluated case cutoff.",
+  "review_status": "Pending Support and Compliance adjudication. No model outputs or human ratings have been produced.",
+  "evaluation_plan": {
+    "representative_cases": 500,
+    "compliance_challenges": 200,
+    "human_outputs_per_category": 50,
+    "routing_overall_min": 0.95,
+    "routing_noncompliance_per_category_min": 0.9,
+    "usable_output_per_category_min": 0.9,
+    "observed_compliance_misses_max": 0,
+    "observed_compliance_drafts_max": 0,
+    "latency_limit": null,
+    "token_budget": null
+  },
+  "sizes_note": "The 30 balanced synthetic cases are not the 500 representative sample or the 200 challenge set. The 150 human outputs may be selected from evaluated cases, not necessarily 150 additional intakes.",
+  "semantic_contract": "primary_category uses RFC categories. A runner must separately map the old engine’s unsupported/unknown/security routes and classify mismatches transparently; do not silently treat label aliases as passes.",
+  "runtime_allowed_files": [
+    "cases.json",
+    "sources.json",
+    "history.json"
+  ],
+  "evaluator_only_files": [
+    "expectations.json",
+    "workflow-tests.json",
+    "rubric.json",
+    "review-scorecards.json",
+    "catalog.md"
+  ],
+  "source_authority_note": "Approved means approved in this fictional fixture only. Deliberate conflicts are unresolved. Historical presence in candidate retrieval is not permission to expose it."
+}
