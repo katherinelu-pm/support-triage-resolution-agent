@@ -1,0 +1,14 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {intakeExamples,buildIntakeCase,retrieveIntakeSources} from '../dist/intake.mjs';
+import {analyze,assignAutomatically,approveDraft,deliver,approveSummaryText,summaryText,confirmHandoff,categories} from '../dist/review-engine.mjs';
+const read=n=>JSON.parse(readFileSync(new URL('../dist/data/'+n+'.json',import.meta.url)));
+const k=read('knowledge').articles,h=read('historical-cases').historical_cases;
+const build=(fields,id='NEW-001')=>buildIntakeCase(fields,{id,knowledge:k,at:'2026-11-02T23:00:00Z'});
+const run=c=>assignAutomatically(analyze(c,k,h));
+for(const [i,category] of ['general_qa','product_feedback','compliance'].entries())test('Intake to reviewed output: '+category,()=>{const c=build(intakeExamples[i]),r=run(c);assert.equal(r.primaryCategory,category);assert.equal(r.classification.status,'assigned');assert.equal(c.status,'open');assert.ok(!('category' in c));if(i===0){assert.equal(categories[category],'General FAQ');assert.match(r.draft,/^Subject: /);assert.match(r.draft,/Hello,/);assert.match(r.draft,/down payment/);assert.match(r.draft,/Best regards,\nBankrate Support$/);assert.throws(()=>deliver(r,c,k,{}));const a=approveDraft(r,c,k,{},r.draft,'Alex');assert.equal(deliver(a,c,k,{}).state,'sent');}else{assert.equal(r.draft,null);const a=approveSummaryText(r,c,k,{},summaryText(r.internalSummary),'Alex');assert.equal(confirmHandoff(a,c,k,{}).state,'routed');}});
+test('Edited prefill is classified from submitted text, not sample name',()=>{const c=build({...intakeExamples[0],message:'A lender discriminated against me because of my national origin.'});const r=run(c);assert.equal(r.primaryCategory,'compliance');assert.equal(r.draft,null);});
+test('Custom intake without evidence does not invent an email',()=>{const c=build({...intakeExamples[0],message:'How do I use the notification feature on your new dashboard?'});c.retrieval_fixture.candidate_source_ids=[];const r=run(c);assert.equal(r.draft,null);});
+test('Intake validates required fields and does not share mutable state',()=>{assert.throws(()=>build({...intakeExamples[0],message:' '}));assert.throws(()=>build({...intakeExamples[0],priority:'P9'}));const a=build(intakeExamples[0]),b=build(intakeExamples[0],'NEW-002');a.conversation[0].text='Changed';assert.notEqual(a.conversation[0].text,b.conversation[0].text);assert.notEqual(a.id,b.id);});
+test('Intake source retrieval responds to new member context',()=>{const a=retrieveIntakeSources('How do I change the down payment?',k);assert.ok(a.includes('KB-04'));assert.ok(!a.includes('KB-01'));const b=retrieveIntakeSources('I need password reset instructions.',k);assert.ok(b.includes('KB-01'));});
