@@ -1,0 +1,33 @@
+name: Safety invariants
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  safety:
+    name: Compliance and privacy safety gate
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Block prohibited answers and sensitive-data leaks
+        run: npm run test:safety
+      - name: Upload metadata-only safety result
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: safety-gate-result
+          path: review/results/safety-latest.json
+          if-no-files-found: error
+  regression:
+    name: Prototype regression tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm test
