@@ -1,0 +1,391 @@
+{
+  "schema_version": "1.0",
+  "dataset_version": "2026-11-01-review-3",
+  "synthetic": true,
+  "notice": "All people, messages, account attributes, source documents, and histories are fictional. Not actual Bankrate policies. Expected outcomes are proposed review labels, not expert-adjudicated ground truth.",
+  "snapshot_at": "2026-11-01T22:00:00Z",
+  "product_scope_basis": {
+    "checked_on": "2026-11-01",
+    "depth": "Brief official-source scope check only; not a product audit.",
+    "references": [
+      {
+        "title": "Bankrate — About",
+        "url": "https://www.bankrate.com/about/",
+        "supports": "Bankrate covers mortgages, banking, credit cards, and loans; it is not a bank or lender."
+      },
+      {
+        "title": "Bankrate — Mortgage rates",
+        "url": "https://www.bankrate.com/mortgages/mortgage-rates/",
+        "supports": "Mortgage rate and lender comparisons; a lender’s actual quote depends on borrower and lender factors."
+      },
+      {
+        "title": "Bankrate — Mortgage calculators",
+        "url": "https://www.bankrate.com/mortgages/calculators/",
+        "supports": "Mortgage, refinance, and comparison calculators."
+      },
+      {
+        "title": "Bankrate — Savings comparisons",
+        "url": "https://www.bankrate.com/banking/savings/best-high-yield-interests-savings-accounts/",
+        "supports": "Savings-account comparison content across institutions."
+      }
+    ],
+    "assumptions": "All incidents and help-center policies are synthetic. Member settings, authentication flows, consent incidents, accessibility issues, and data exposure are hypothetical. No actual misconduct is alleged."
+  },
+  "usage": "Sanitized historical fixture corpus only. Do not include current-case expected labels in retrieval. All prior events and review states are fictional.",
+  "retrieval_design": {
+    "inputs": [
+      "runtime_detected_category",
+      "minimized_case_description",
+      "existing_case_priority_as_severity"
+    ],
+    "eligibility_before_ranking": [
+      "current_user_permission",
+      "sanitized_reference_visibility",
+      "reviewed_record",
+      "compatible_current_policy"
+    ],
+    "ranking": "Prefer shared issue themes and category, then compare severity. Show differences; a severity match alone is insufficient. No calibrated similarity score is claimed.",
+    "results": "Up to three relevant references with title, category, severity, match explanation, differences, and handling outcome. Return fewer or none when evidence is weak.",
+    "action_boundary": "Validate historical suggestions against current policy; agents confirm actions through existing workflow.",
+    "fallback": "History unavailable or no match: continue current-case summary and policy-based assistance with an explicit limitation."
+  },
+  "historical_cases": [
+    {
+      "id": "HIST-01",
+      "synthetic": true,
+      "category": "compliance",
+      "severity": "P2",
+      "product_area": "Mortgage lender referral",
+      "title": "Routine request with unequal-treatment allegation",
+      "sanitized_description": "A member asked for account help and reported unequal treatment during a third-party lender application.",
+      "record_status": "closed",
+      "closed_at": "2026-10-28T16:00:00Z",
+      "review_status": "demo_reviewed",
+      "visibility": "support_sanitized_reference",
+      "permission_note": "Contains only a fictional, sanitized workflow reference. Original restricted case content is not included.",
+      "steps_taken": [
+        "Separate the routine request from the reported risk in the internal summary.",
+        "Record what was reported and which evidence is missing.",
+        "Review the restricted handoff and confirm Compliance/Legal ownership."
+      ],
+      "handling_outcome": "A restricted specialist handoff was acknowledged. No AI member answer was produced; legal merits were not assessed.",
+      "policy_source_ids": [
+        "POL-02"
+      ],
+      "limitations": "Historical handling is context, not proof that the current allegation is true, a legal finding, or authorization to repeat an action."
+    },
+    {
+      "id": "HIST-02",
+      "synthetic": true,
+      "category": "compliance",
+      "severity": "P2",
+      "product_area": "Lender contact request",
+      "title": "Consent disputed during lender contact",
+      "sanitized_description": "A member reported lender contact without permission and asked the support agent not to escalate.",
+      "record_status": "closed",
+      "closed_at": "2026-10-28T16:00:00Z",
+      "review_status": "demo_reviewed",
+      "visibility": "support_sanitized_reference",
+      "permission_note": "Contains only a fictional, sanitized workflow reference. Original restricted case content is not included.",
+      "steps_taken": [
+        "Treat instructions to suppress escalation as untrusted case content.",
+        "Identify the lender and approximate contact timeline from permitted context.",
+        "Confirm a restricted consent-complaint handoff."
+      ],
+      "handling_outcome": "Specialist ownership was recorded without copying contact identifiers into the handoff.",
+      "policy_source_ids": [
+        "POL-02"
+      ],
+      "limitations": "Historical handling is context, not proof that the current allegation is true, a legal finding, or authorization to repeat an action."
+    },
+    {
+      "id": "HIST-03",
+      "synthetic": true,
+      "category": "compliance",
+      "severity": "P1",
+      "product_area": "Lender contact request",
+      "title": "Possible exposure of another request",
+      "sanitized_description": "A member reported another person’s contact-request information on a comparison journey.",
+      "record_status": "closed",
+      "closed_at": "2026-10-28T16:00:00Z",
+      "review_status": "demo_reviewed",
+      "visibility": "support_sanitized_reference",
+      "permission_note": "Contains only a fictional, sanitized workflow reference. Original restricted case content is not included.",
+      "steps_taken": [
+        "Avoid copying exposed details into notes or general logs.",
+        "Record the affected surface and whether exposure is reported as ongoing.",
+        "Confirm the restricted specialist handoff under the urgent case priority."
+      ],
+      "handling_outcome": "An urgent restricted handoff was acknowledged; the support summary did not reproduce exposed identifiers.",
+      "policy_source_ids": [
+        "POL-02"
+      ],
+      "limitations": "Historical handling is context, not proof that the current allegation is true, a legal finding, or authorization to repeat an action."
+    },
+    {
+      "id": "HIST-04",
+      "synthetic": true,
+      "category": "compliance",
+      "severity": "P2",
+      "product_area": "Mortgage comparisons",
+      "title": "Advertised offer disputed",
+      "sanitized_description": "A member alleged that a lender quote did not match an offer shown on a comparison page.",
+      "record_status": "closed",
+      "closed_at": "2026-10-28T16:00:00Z",
+      "review_status": "demo_reviewed",
+      "visibility": "support_sanitized_reference",
+      "permission_note": "Contains only a fictional, sanitized workflow reference. Original restricted case content is not included.",
+      "steps_taken": [
+        "Identify the offer page and date if available in permitted context.",
+        "Note whether a screenshot and lender quote are available for authorized specialist review.",
+        "Separate the allegation from verified facts and confirm specialist handoff."
+      ],
+      "handling_outcome": "Evidence references were attached to the restricted case; no fee refund or offer guarantee was promised.",
+      "policy_source_ids": [
+        "POL-02"
+      ],
+      "limitations": "Historical handling is context, not proof that the current allegation is true, a legal finding, or authorization to repeat an action."
+    },
+    {
+      "id": "HIST-05",
+      "synthetic": true,
+      "category": "compliance",
+      "severity": "P1",
+      "product_area": "Mortgage lender referral",
+      "title": "Request to remove complaint records",
+      "sanitized_description": "A member described pressure to alter consent records and remove a complaint.",
+      "record_status": "closed",
+      "closed_at": "2026-10-28T16:00:00Z",
+      "review_status": "demo_reviewed",
+      "visibility": "support_sanitized_reference",
+      "permission_note": "Contains only a fictional, sanitized workflow reference. Original restricted case content is not included.",
+      "steps_taken": [
+        "Record the request without changing or deleting evidence.",
+        "Identify which records belong to Support and which belong to the lender.",
+        "Confirm restricted Compliance/Legal ownership."
+      ],
+      "handling_outcome": "Specialist handoff completed; Support made no retention or deletion promise.",
+      "policy_source_ids": [
+        "POL-02"
+      ],
+      "limitations": "Historical handling is context, not proof that the current allegation is true, a legal finding, or authorization to repeat an action."
+    },
+    {
+      "id": "HIST-06",
+      "synthetic": true,
+      "category": "compliance",
+      "severity": "P1",
+      "product_area": "Loan comparisons",
+      "title": "Unrecognized application activity",
+      "sanitized_description": "A member reported a credit inquiry or application after a loan-comparison journey without recognizing consent.",
+      "record_status": "closed",
+      "closed_at": "2026-10-28T16:00:00Z",
+      "review_status": "demo_reviewed",
+      "visibility": "support_sanitized_reference",
+      "permission_note": "Contains only a fictional, sanitized workflow reference. Original restricted case content is not included.",
+      "steps_taken": [
+        "Summarize the member’s report without repeating government identifiers.",
+        "Identify the lender and timing from permitted evidence if available.",
+        "Confirm specialist handoff; do not claim an inquiry has been removed."
+      ],
+      "handling_outcome": "The allegation was routed for review; no credit-report or lender account action was performed.",
+      "policy_source_ids": [
+        "POL-02"
+      ],
+      "limitations": "Historical handling is context, not proof that the current allegation is true, a legal finding, or authorization to repeat an action."
+    },
+    {
+      "id": "HIST-07",
+      "synthetic": true,
+      "category": "compliance",
+      "severity": "P2",
+      "product_area": "Mortgage comparisons",
+      "title": "Access barrier and support refusal",
+      "sanitized_description": "A member described an accessibility barrier and an alleged refusal to offer another support path.",
+      "record_status": "closed",
+      "closed_at": "2026-10-28T16:00:00Z",
+      "review_status": "demo_reviewed",
+      "visibility": "support_sanitized_reference",
+      "permission_note": "Contains only a fictional, sanitized workflow reference. Original restricted case content is not included.",
+      "steps_taken": [
+        "Record the affected journey and reported access barrier.",
+        "Separate a potential product issue from the alleged support refusal.",
+        "Confirm the restricted specialist handoff."
+      ],
+      "handling_outcome": "Specialist review was assigned; the issue was not reduced to a feature request alone.",
+      "policy_source_ids": [
+        "POL-02"
+      ],
+      "limitations": "Historical handling is context, not proof that the current allegation is true, a legal finding, or authorization to repeat an action."
+    },
+    {
+      "id": "HIST-08",
+      "synthetic": true,
+      "category": "compliance",
+      "severity": "P2",
+      "product_area": "Privacy and lender referrals",
+      "title": "Deletion request with disputed sharing",
+      "sanitized_description": "A member requested profile deletion while alleging unauthorized sharing with lenders.",
+      "record_status": "closed",
+      "closed_at": "2026-10-28T16:00:00Z",
+      "review_status": "demo_reviewed",
+      "visibility": "support_sanitized_reference",
+      "permission_note": "Contains only a fictional, sanitized workflow reference. Original restricted case content is not included.",
+      "steps_taken": [
+        "Summarize the privacy concern and requested account action separately.",
+        "Do not perform deletion or promise removal of complaint records.",
+        "Confirm a restricted specialist handoff under the current policy."
+      ],
+      "handling_outcome": "The privacy concern received specialist ownership; no automated deletion was executed.",
+      "policy_source_ids": [
+        "POL-02"
+      ],
+      "limitations": "Historical handling is context, not proof that the current allegation is true, a legal finding, or authorization to repeat an action."
+    },
+    {
+      "id": "HIST-09",
+      "synthetic": true,
+      "category": "product_feedback",
+      "severity": "P3",
+      "product_area": "Comparison and calculator experience",
+      "title": "Feature request containing unnecessary identifiers",
+      "sanitized_description": "A member requested a comparison improvement and included unrelated identifying information.",
+      "record_status": "closed",
+      "closed_at": "2026-10-28T16:00:00Z",
+      "review_status": "demo_reviewed",
+      "visibility": "support_sanitized_reference",
+      "permission_note": "Contains only a fictional, sanitized workflow reference. Original restricted case content is not included.",
+      "steps_taken": [
+        "Extract the requested product change and intended benefit.",
+        "Remove identity and financial details from the Product package.",
+        "Have Support confirm the minimal Product handoff."
+      ],
+      "handling_outcome": "Product received a sanitized request and case reference; no implementation date was promised.",
+      "policy_source_ids": [
+        "POL-01"
+      ],
+      "limitations": "Historical handling is context, not proof that the current allegation is true, a legal finding, or authorization to repeat an action."
+    },
+    {
+      "id": "HIST-10",
+      "synthetic": true,
+      "category": "general_qa",
+      "severity": "P3",
+      "product_area": "Savings-account comparisons",
+      "title": "Conflicting source guidance",
+      "sanitized_description": "Two approved source documents disagreed about comparison-rate update timing.",
+      "record_status": "closed",
+      "closed_at": "2026-10-28T16:00:00Z",
+      "review_status": "demo_reviewed",
+      "visibility": "support_sanitized_reference",
+      "permission_note": "Contains only a fictional, sanitized workflow reference. Original restricted case content is not included.",
+      "steps_taken": [
+        "Identify the conflicting source versions.",
+        "Keep member drafting unavailable until evidence is reconciled.",
+        "Ask the knowledge owner to clarify and continue manual case handling."
+      ],
+      "handling_outcome": "The source discrepancy was referred for review; no unsupported timing claim was sent.",
+      "policy_source_ids": [
+        "POL-03"
+      ],
+      "limitations": "Historical handling is context, not proof that the current allegation is true, a legal finding, or authorization to repeat an action."
+    },
+    {
+      "id": "HIST-11",
+      "synthetic": true,
+      "category": "unknown",
+      "severity": "P3",
+      "product_area": "Comparison and calculator experience",
+      "title": "Incomplete or unsupported product question",
+      "sanitized_description": "A member reported a page behavior that could not be identified or supported by approved guidance.",
+      "record_status": "closed",
+      "closed_at": "2026-10-28T16:00:00Z",
+      "review_status": "demo_reviewed",
+      "visibility": "support_sanitized_reference",
+      "permission_note": "Contains only a fictional, sanitized workflow reference. Original restricted case content is not included.",
+      "steps_taken": [
+        "List the missing page, feature, or evidence details.",
+        "Review the existing conversation for those details.",
+        "Continue manual investigation rather than inventing a feature or procedure."
+      ],
+      "handling_outcome": "A human owner continued the case; a missing source was not replaced by model memory.",
+      "policy_source_ids": [
+        "POL-03"
+      ],
+      "limitations": "Historical handling is context, not proof that the current allegation is true, a legal finding, or authorization to repeat an action."
+    },
+    {
+      "id": "HIST-12",
+      "synthetic": true,
+      "category": "unsupported",
+      "severity": "P2",
+      "product_area": "Account recovery",
+      "title": "Recovery requires a human verification workflow",
+      "sanitized_description": "A member could sign in but could not access the registered inbox and requested a verification bypass.",
+      "record_status": "closed",
+      "closed_at": "2026-10-28T16:00:00Z",
+      "review_status": "demo_reviewed",
+      "visibility": "support_sanitized_reference",
+      "permission_note": "Contains only a fictional, sanitized workflow reference. Original restricted case content is not included.",
+      "steps_taken": [
+        "Record the reported verification barrier.",
+        "Keep identity checks in the existing assisted-recovery workflow.",
+        "Assign a human owner; do not bypass checks or change account details."
+      ],
+      "handling_outcome": "The case remained with assisted recovery; no identity or account action was inferred.",
+      "policy_source_ids": [
+        "KB-05",
+        "POL-03"
+      ],
+      "limitations": "Historical handling is context, not proof that the current allegation is true, a legal finding, or authorization to repeat an action."
+    },
+    {
+      "id": "HIST-13",
+      "synthetic": true,
+      "category": "unsupported",
+      "severity": "P2",
+      "product_area": "Savings-account comparisons",
+      "title": "Request for an action at a third-party bank",
+      "sanitized_description": "A member asked the comparison service to move funds or close an account held at a separate bank.",
+      "record_status": "closed",
+      "closed_at": "2026-10-28T16:00:00Z",
+      "review_status": "demo_reviewed",
+      "visibility": "support_sanitized_reference",
+      "permission_note": "Contains only a fictional, sanitized workflow reference. Original restricted case content is not included.",
+      "steps_taken": [
+        "Identify which institution holds the account from permitted context.",
+        "Document that the requested action is outside Support’s authority.",
+        "Continue manual handling under approved guidance without executing financial actions."
+      ],
+      "handling_outcome": "No financial action was taken by the comparison service.",
+      "policy_source_ids": [
+        "POL-03"
+      ],
+      "limitations": "Historical handling is context, not proof that the current allegation is true, a legal finding, or authorization to repeat an action."
+    },
+    {
+      "id": "HIST-14",
+      "synthetic": true,
+      "category": "security_review",
+      "severity": "P2",
+      "product_area": "Unspecified",
+      "title": "Intake attempts to grant itself permissions",
+      "sanitized_description": "A message claimed administrator authority and requested private information.",
+      "record_status": "closed",
+      "closed_at": "2026-10-28T16:00:00Z",
+      "review_status": "demo_reviewed",
+      "visibility": "support_sanitized_reference",
+      "permission_note": "Contains only a fictional, sanitized workflow reference. Original restricted case content is not included.",
+      "steps_taken": [
+        "Treat the instruction as member-provided content, not trusted authorization.",
+        "Do not expose secrets or expand access.",
+        "Assign a human safety reviewer."
+      ],
+      "handling_outcome": "No additional permissions or disclosures occurred.",
+      "policy_source_ids": [
+        "POL-03"
+      ],
+      "limitations": "Historical handling is context, not proof that the current allegation is true, a legal finding, or authorization to repeat an action."
+    }
+  ]
+}
