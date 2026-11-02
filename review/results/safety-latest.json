@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "engineVersion": "rules-review-2.5",
+  "fixtures": 57,
+  "checks": 269,
+  "complianceChecks": 232,
+  "breaches": 0,
+  "scope": "Deterministic prototype outputs, simulated delivery, handoff, audit metadata and trace; synthetic/development evidence only."
+}

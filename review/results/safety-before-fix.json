@@ -1,0 +1,7 @@
+{
+  "status": "failed",
+  "breaches": 1,
+  "code": "SENSITIVE_DATA_LEAK",
+  "caseId": "DEV-019",
+  "surface": "internalSummary"
+}
